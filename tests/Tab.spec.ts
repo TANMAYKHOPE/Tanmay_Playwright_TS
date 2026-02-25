@@ -16,7 +16,7 @@ import { Browser, chromium, Page } from "@playwright/test";
     await page.keyboard.press(`Tab`);
     await page.keyboard.type(`QA`, { delay: 200 });
     await page.keyboard.press(`Tab`);
-    await page.keyboard.type(`ato@gmail.com`, { delay: 200 });
+    await page.keyboard.type(getrandomemail(), { delay: 200 });
     await page.keyboard.press(`Tab`);
     await page.keyboard.type(`8998898989`, { delay: 200 });
     await page.keyboard.press(`Tab`);
@@ -26,9 +26,14 @@ import { Browser, chromium, Page } from "@playwright/test";
     await page.keyboard.press(`Tab`);
     await page.keyboard.press(`Tab`);
     await page.keyboard.press(`Tab`);
-    await page.keyboard.press(`Space`);
+    await page.keyboard.press(`space`);
     await page.keyboard.press(`Tab`);
     await page.keyboard.press(`enter`);
     console.log("The registration is successful");  
 
 })();
+
+function getrandomemail(): string {
+    return 'opencard' +Date.now() + '@gmail.com';
+
+}
