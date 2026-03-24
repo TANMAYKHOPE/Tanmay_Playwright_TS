@@ -13,10 +13,11 @@ let page:Page=await browsser.newPage();
 page.on('dialog', async dialog => {
     console.log(dialog.message());
     //await dialog.accept();
-    await dialog.accept('Playwright');
+    await dialog.dismiss();
+    //await dialog.accept('Playwright');
     
-    console.log(dialog.defaultValue());
-    console.log(dialog.type());
+    //console.log(dialog.defaultValue());
+    //console.log(dialog.type());
    
     //console.log(dialog.page());
 
@@ -27,8 +28,8 @@ page.on('dialog', async dialog => {
 
 await page.goto(`https://the-internet.herokuapp.com/javascript_alerts`)
 
-//await page.getByText(`Click for JS Alert`).click();
+await page.getByRole('button', { name: 'Click for JS Alert' }).click();
 //await page.getByText(`Click for JS Confirm`).click();
-await page.getByText(`Click for JS Prompt`).click();
+//await page.getByText(`Click for JS Prompt`).click();
 
 })();
