@@ -1,0 +1,31 @@
+import { chromium } from "@playwright/test";
+
+(async () => {
+  const browser = await chromium.launch({ channel: "chrome", headless: false });
+  const page = await browser.newPage();
+
+  console.log('🌐 Navigating...');
+  await page.goto('https://orangehrm.com/en/contact-sales');
+
+  // Handle cookies safely
+  await page.locator('#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll')
+    .click({ timeout: 5000 })
+    .catch(() => console.log('⚠️ No cookie popup'));
+
+  // Click LinkedIn
+  const linkedinLink = page.locator('a[href*="linkedin"]').first();
+
+  const [newTab] = await Promise.all([
+    page.waitForEvent('popup'),
+    linkedinLink.click()
+  ]);
+
+  if (!newTab) throw new Error("Popup not opened");
+
+  await newTab.waitForLoadState('domcontentloaded');
+
+  console.log(await newTab.title());
+
+  await newTab.close();
+  await browser.close();
+})();

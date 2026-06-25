@@ -9,7 +9,7 @@ import { Browser, chromium, Locator, Page } from "@playwright/test";
 
     //find locator and perform actions
     let page: Page = await browser.newPage();
-//     await page.goto('https://naveenautomationlabs.com/opencart/index.php?route=account/login');
+    await page.goto('https://naveenautomationlabs.com/opencart/index.php?route=account/login');
 //     //1st approch
 //     //await page.locator('#input-email').fill('tanmayqa323@gmail.com');
 //     //await page.locator('#input-password').fill('13Fb@1993');

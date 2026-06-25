@@ -54,7 +54,7 @@ and assistive technologies. For example, button, textbox, link, and alert are se
     let firstNameError: string = await page.getByText('First Name must be between 1 and 32 characters!').innerText();
     console.log('First Name Error: ' + firstNameError);
 
-    expect(firstNameError).toBe('First Name must be between 7!');
+    expect(firstNameError).toBe('First Name must be between 1 and 32 characters!');
 
     
 
